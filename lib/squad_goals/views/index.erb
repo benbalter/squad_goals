@@ -1,0 +1,8 @@
+<h1></h1>
+
+<h2>@<%= org_id %>'s Teams</h2>
+<% teams.each do |team| %>
+  <h3><%= team.name %></h3>
+  <p><%= team.description %></p>
+  <p><a class="btn" href="/join/<%= team.slug %>">Join @<%= org_id %>'s <%= team.name %></a></p>
+<% end %>

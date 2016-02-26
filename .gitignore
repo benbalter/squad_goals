@@ -1,0 +1,11 @@
+.env
+.bundle
+*.gem
+Gemfile.lock
+/lib/squad_goals/public/vendor/jquery
+/lib/squad_goals/public/vendor/bootstrap/grunt
+/lib/squad_goals/public/vendor/bootstrap/js
+/lib/squad_goals/public/vendor/bootstrap/less
+/lib/squad_goals/public/vendor/bootstrap/nuget
+/lib/squad_goals/public/vendor/bootstrap/*.md
+/lib/squad_goals/public/vendor/bootstrap/*.js
