@@ -1,6 +1,6 @@
 # SquadGoals
 
-A tiny app to allow contributors to opt-in to GitHub teams.
+A tiny app to allow open-source contributors to opt-in to GitHub teams.
 
 ## Setup
 
