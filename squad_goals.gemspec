@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ben Balter']
   spec.email         = ['ben.balter@github.com']
 
-  spec.summary       = 'A tiny app to allow contributors to opt-in to GitHub teams'
+  spec.summary       = 'A tiny app to allow open-source contributors to opt-in to GitHub teams.'
   spec.homepage      = "https://github.com/benbalter/squad_goals"
   spec.license       = 'MIT'
 
