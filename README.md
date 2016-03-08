@@ -2,6 +2,12 @@
 
 A tiny app to allow open-source contributors to opt-in to GitHub teams.
 
+## What it does
+
+The #SquadGoals app provides an interface whereby community members can see a list of open GitHub teams, and provide them with the ability to freely join any team at the click of a button.
+
+![screenshot](https://cloud.githubusercontent.com/assets/282759/13612933/e7271ece-e537-11e5-987a-057799f96e7c.png)
+
 ## Setup
 
 ### Credentials
