@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['ben.balter@github.com']
 
   spec.summary       = 'A tiny app to allow open-source contributors to opt-in to GitHub teams.'
-  spec.homepage      = "https://github.com/benbalter/squad_goals"
+  spec.homepage      = 'https://github.com/benbalter/squad_goals'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'octokit', '~> 4.0'
   spec.add_dependency 'rack-ssl-enforcer', '~> 0.2'
   spec.add_dependency 'dotenv', '~> 2.0'
+  spec.add_dependency 'dalli', '~> 2.7'
+
   spec.add_development_dependency 'rspec', '~> 3.1'
   spec.add_development_dependency 'rack-test', '~> 0.6'
   spec.add_development_dependency 'webmock', '~> 1.2 '
