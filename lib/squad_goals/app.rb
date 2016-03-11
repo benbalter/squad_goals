@@ -32,14 +32,13 @@ module SquadGoals
     configure do
       set :organization, Organization.new(ENV['GITHUB_ORG_ID'])
       set :client, Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
-      set :dalli, Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "localhost:11211").split(","),
-                    {:username => ENV["MEMCACHIER_USERNAME"],
-                     :password => ENV["MEMCACHIER_PASSWORD"],
-                     :failover => true,
-                     :socket_timeout => 1.5,
-                     :socket_failure_delay => 0.2,
-                     :exires_in => MEMCACHE_TTL
-                    })
+      set :dalli, Dalli::Client.new((ENV['MEMCACHIER_SERVERS'] || 'localhost:11211').split(','),
+                                    username: ENV['MEMCACHIER_USERNAME'],
+                                    password: ENV['MEMCACHIER_PASSWORD'],
+                                    failover: true,
+                                    socket_timeout: 1.5,
+                                    socket_failure_delay: 0.2,
+                                    exires_in: MEMCACHE_TTL)
     end
 
     def team_requested
