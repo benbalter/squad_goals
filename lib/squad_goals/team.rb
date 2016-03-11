@@ -1,6 +1,5 @@
 module SquadGoals
   class Team
-    extend  SquadGoals::Helpers
     include SquadGoals::Helpers
 
     attr_reader :id, :name, :slug, :description
