@@ -2,6 +2,12 @@
 
 A tiny app to allow open-source contributors to opt-in to GitHub teams.
 
+## What it does
+
+The #SquadGoals app provides an interface whereby community members can see a list of open GitHub teams, and provide them with the ability to freely join any team at the click of a button.
+
+![screenshot](https://cloud.githubusercontent.com/assets/282759/13612933/e7271ece-e537-11e5-987a-057799f96e7c.png)
+
 ## Setup
 
 ### Credentials
@@ -17,15 +23,15 @@ You'll need a dedicated "bot" account to add users to the organization:
 
 #### An OAuth application
 
-You'll also need to create an OAUth application to validate users:
+You'll also need to create an OAuth application to validate users:
 
-1. Create an OAauth application *within your organization* via `https://github.com/organizations/[YOUR-ORGANIZATION-NAME]/settings/applications/new`
+1. Create an OAuth application *within your organization* via `https://github.com/organizations/[YOUR-ORGANIZATION-NAME]/settings/applications/new`
 2. The homepage URL should be the URL to your production instance.
 3. You can leave the callback URL blank. The default is fine.
 
 ## Developing locally and deploying
 
-1. Create [an oauth app](github.com/settings/applications/new) (see above)
+1. Create [an OAuth app](github.com/settings/applications/new) (see above)
 2. Create a personal access token for a user with admin rights to the organization (see above)
 3. Add `gem 'squad_gaols' to your project's Gemfile`
 4. Add the following to your project's `config.ru` file:
@@ -41,7 +47,7 @@ The following environmental values should be set:
 
 * `GITHUB_ORG_ID` - The name of the org to add users to
 * `GITHUB_CLIENT_ID` - Your OAuth app's client ID
-* `GITHUB_CLIENT_SECRET` - Your Oauth app's client secret
+* `GITHUB_CLIENT_SECRET` - Your OAuth app's client secret
 * `GITHUB_TOKEN` - A personal access token for a user with admin rights to the organization
 * `GITHUB_TEAMS` - Comma-separated list of team names you'd like to allow access to, e.g, `red-team,blue-team`
 
