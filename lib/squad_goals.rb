@@ -3,39 +3,31 @@ require 'octokit'
 require 'dotenv'
 require 'yaml'
 require 'tilt/erb'
-
+require 'dalli'
+require 'digest'
 require 'squad_goals/version'
-require 'squad_goals/helpers'
-require 'squad_goals/app'
 
 module SquadGoals
-  def self.root
-    File.expand_path './squad_goals', File.dirname(__FILE__)
-  end
+  autoload :Helpers,      'squad_goals/helpers'
+  autoload :App,          'squad_goals/app'
+  autoload :Team,         'squad_goals/team'
+  autoload :Organization, 'squad_goals/organization'
 
-  def self.views_dir
-    @views_dir ||= File.expand_path 'views', SquadGoals.root
-  end
+  class << self
+    def root
+      File.expand_path './squad_goals', File.dirname(__FILE__)
+    end
 
-  def self.views_dir=(dir)
-    @views_dir = dir
-  end
+    def views_dir
+      @views_dir ||= File.expand_path 'views', SquadGoals.root
+    end
 
-  def self.public_dir
-    @public_dir ||= File.expand_path 'public', SquadGoals.root
-  end
+    attr_writer :views_dir
 
-  def self.public_dir=(dir)
-    @public_dir = dir
-  end
-end
+    def public_dir
+      @public_dir ||= File.expand_path 'public', SquadGoals.root
+    end
 
-unless SquadGoals::App.production?
-  Dotenv.load
-  stack = Faraday::RackBuilder.new do |builder|
-    builder.response :logger
-    builder.use Octokit::Response::RaiseError
-    builder.adapter Faraday.default_adapter
+    attr_writer :public_dir
   end
-  Octokit.middleware = stack
 end

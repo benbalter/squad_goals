@@ -1,33 +1,27 @@
 module SquadGoals
   module Helpers
-
-    def teams
-      @teams ||= begin
-        teams = client.organization_teams(org_id)
-        teams.select { |team| team_whitelist.include? team.slug }
-      end
+    # Call octokit, using memcached response, when available
+    def client_call(method, *args)
+      key = cache_key(method, args)
+      cached = dalli.get(key)
+      return cached if cached
+      response = client.send(method, *args)
+      dalli.set(key, response)
+      response
     end
 
     private
 
-    def team_whitelist
-      ENV['GITHUB_TEAMS'].split(",")
+    def cache_key(method, *args)
+      Digest::SHA1.hexdigest(method.to_s + ': ' + args.join(', '))
     end
 
     def client
-      @client ||= Octokit::Client.new access_token: ENV['GITHUB_TOKEN']
+      SquadGoals::App.client
     end
 
-    def org_id
-      ENV['GITHUB_ORG_ID']
-    end
-
-    def team
-      teams.find { |team| team.slug == params["team"] }
-    end
-
-    def add!
-      client.add_team_membership team.id, github_user.login
+    def dalli
+      SquadGoals::App.dalli
     end
   end
 end

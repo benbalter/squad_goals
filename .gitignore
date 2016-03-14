@@ -1,7 +1,6 @@
 .env
 .bundle
 *.gem
-Gemfile.lock
 /lib/squad_goals/public/vendor/jquery
 /lib/squad_goals/public/vendor/bootstrap/grunt
 /lib/squad_goals/public/vendor/bootstrap/js

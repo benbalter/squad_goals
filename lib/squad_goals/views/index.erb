@@ -1,8 +1,30 @@
-<h1></h1>
-
-<h2>@<%= org_id %>'s Teams</h2>
+<h2><%= organization.name %>'s Teams</h2>
 <% teams.each do |team| %>
   <h3><%= team.name %></h3>
   <p><%= team.description %></p>
-  <p><a class="btn" href="/join/<%= team.slug %>">Join @<%= org_id %>'s <%= team.name %></a></p>
+  <p>
+    <% if team.member?(user) %>
+    You're already a member of
+    <% else %>
+    <a class="btn" href="/join/<%= team.slug %>">Join
+      <% members = team.members.shuffle %>
+      <% if members.count != 0 %>
+        <% if members.count == 1 %>
+          <%= avatar members.first.login %>
+        <% elsif members.count == 2 %>
+          <%= avatar members[0].login %> and
+          <%= avatar members[1].login %>
+        <% elsif members.count == 3 %>
+          <%= avatar members[0].login %>,
+          <%= avatar members[1].login %>, and
+          <%= avatar members[2].login %>,
+        <% else %>
+          <%= avatar members[0].login %>,
+          <%= avatar members[1].login %>,
+          and <% members.count - 2 %> others
+        <% end %>
+        on
+      <% end %>
+    <% end %>
+    @<%= org_id %>'s <%= team.name %></a></p>
 <% end %>
