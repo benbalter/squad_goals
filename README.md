@@ -51,6 +51,10 @@ The following environmental values should be set:
 * `GITHUB_TOKEN` - A personal access token for a user with admin rights to the organization
 * `GITHUB_TEAMS` - Comma-separated list of team names you'd like to allow access to, e.g, `red-team,blue-team`
 
+### Memcache
+
+You'll also need an instance of Memecache running, to cache API calls. If using Herkou, this can be within [memcachier's free use tier](https://devcenter.heroku.com/articles/memcachier).
+
 ### Customizing Views
 
 There are three views, `success`, `forbidden`, and `error`. They're pretty boring by default, so you may want to swap them out for something a bit my snazzy. If you had a views directory along side your `config.ru`, you can do so like this in your `config.ru` file:
