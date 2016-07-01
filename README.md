@@ -33,7 +33,7 @@ You'll also need to create an OAuth application to validate users:
 
 1. Create [an OAuth app](github.com/settings/applications/new) (see above)
 2. Create a personal access token for a user with admin rights to the organization (see above)
-3. Add `gem 'squad_gaols' to your project's Gemfile`
+3. Add `gem 'squad_goals' to your project's Gemfile`
 4. Add the following to your project's `config.ru` file:
 
 ```ruby
